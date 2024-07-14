@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int selectedIndex = 0;
+  int selectedIndex = 1;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                 setState(() {});
               },
               showUnselectedLabels: false,
-              showSelectedLabels: false,
+              showSelectedLabels: true,
               type: BottomNavigationBarType.fixed,
               backgroundColor: Color(0xffB7935F),
               selectedItemColor: Colors.black,
@@ -51,35 +51,35 @@ class _HomePageState extends State<HomePage> {
                     backgroundColor: Color(0xffB7935F),
                     icon: ImageIcon(
                       AssetImage("assets/images/quran.png"),
-                      size: 40,
+                      size: 30,
                     ),
                     label: "Moshaf"),
                 BottomNavigationBarItem(
                     backgroundColor: Color(0xffB7935F),
                     icon: ImageIcon(
                       AssetImage("assets/images/sebha.png"),
-                      size: 40,
+                      size: 30,
                     ),
                     label: "Sebha"),
                 BottomNavigationBarItem(
                     backgroundColor: Color(0xffB7935F),
                     icon: ImageIcon(
                       AssetImage("assets/images/radio.png"),
-                      size: 40,
+                      size: 30,
                     ),
                     label: "Radio"),
                 BottomNavigationBarItem(
                     backgroundColor: Color(0xffB7935F),
                     icon: ImageIcon(
                       AssetImage("assets/images/ahadeth.png"),
-                      size: 40,
+                      size: 30,
                     ),
                     label: "Ahadeth"),
                 BottomNavigationBarItem(
                     backgroundColor: Color(0xffB7935F),
                     icon: Icon(
                       Icons.settings,
-                      size: 40,
+                      size: 30,
                     ),
                     label: "Settings"),
               ]),
