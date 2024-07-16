@@ -31,9 +31,12 @@ class _SebhaTabState extends State<SebhaTab> {
         Stack(
           alignment: Alignment.topCenter,
           children: [
-            Image.asset("assets/images/head.png"),
             Padding(
-              padding: const EdgeInsets.only(top: 78.0),
+              padding: const EdgeInsets.only(left: 50.0),
+              child: Image.asset("assets/images/head.png"),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 79.0),
               child: Transform.rotate(
                   angle: angel,
                   child: GestureDetector(

@@ -48,11 +48,11 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
               itemBuilder: (context, index) {
                 return Text(
                   "(*)${verses[index]}",
-                  textAlign: TextAlign.end,
-                  style: GoogleFonts.elMessiri(
-                    fontSize: 25,
-                    wordSpacing: 4,
-                    fontWeight: FontWeight.w400,
+                  textAlign: TextAlign.center,
+                  textDirection: TextDirection.ltr,
+                  style: GoogleFonts.inter(
+                    fontSize: 20,
+                    fontWeight: FontWeight.normal,
                   ),
                 );
               },
