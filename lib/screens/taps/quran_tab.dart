@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islami_app/screens/sura_details.dart';
-import 'package:islami_app/screens/sura_model.dart';
+import 'package:islami_app/screens/details/sura_details.dart';
+import 'package:islami_app/models/sura_model.dart';
 
 class QuranTab extends StatelessWidget {
   QuranTab({super.key});

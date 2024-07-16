@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/screens/hadeth-details.dart';
+import 'package:islami_app/screens/details/hadeth-details.dart';
 import 'package:islami_app/screens/home-page.dart';
-import 'package:islami_app/screens/sura_details.dart';
+import 'package:islami_app/screens/details/sura_details.dart';
 
 void main() {
   runApp(const MyApp());

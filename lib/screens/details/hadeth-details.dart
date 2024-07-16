@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islami_app/screens/hadeth-model.dart';
+import 'package:islami_app/models/hadeth-model.dart';
 
 class HadethDetailsScreen extends StatefulWidget {
   static const String routeName = "HadethDetails";
