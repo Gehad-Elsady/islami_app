@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/screens/details/sura_details.dart';
 import 'package:islami_app/models/sura_model.dart';
+import 'package:islami_app/theme/app-colors.dart';
 
 class QuranTab extends StatelessWidget {
   QuranTab({super.key});
@@ -250,20 +251,13 @@ class QuranTab extends StatelessWidget {
           "assets/images/home-logo.png",
           height: 227,
         ),
-        Divider(
-          thickness: 3,
-          color: Color(0xffB7935F),
-        ),
+        Divider(),
         Text(
           "Sura Names",
           textAlign: TextAlign.center,
-          style:
-              GoogleFonts.elMessiri(fontSize: 25, fontWeight: FontWeight.w600),
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
-        Divider(
-          thickness: 3,
-          color: Color(0xffB7935F),
-        ),
+        Divider(),
         Expanded(
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
@@ -271,15 +265,14 @@ class QuranTab extends StatelessWidget {
               dividerThickness: 2,
               border: TableBorder(
                   verticalInside:
-                      BorderSide(color: Color(0xffB7935F), width: 3),
-                  bottom: BorderSide(color: Color(0xffB7935F))),
+                      BorderSide(color: AppColor.PraimaryColor, width: 3),
+                  bottom: BorderSide(color: AppColor.PraimaryColor)),
               columns: [
                 DataColumn(
                   label: Center(
                     child: Text(
                       'عدد الآيات',
-                      style: GoogleFonts.elMessiri(
-                          fontSize: 22, fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ),
                 ),
@@ -287,8 +280,7 @@ class QuranTab extends StatelessWidget {
                   label: Center(
                     child: Text(
                       'اسم السورة',
-                      style: GoogleFonts.elMessiri(
-                          fontSize: 22, fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ),
                 ),
@@ -300,7 +292,10 @@ class QuranTab extends StatelessWidget {
                     DataCell(Center(
                       child: Text(
                         ayahCounts[index].toString(),
-                        style: GoogleFonts.elMessiri(fontSize: 20),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                     )),
                     DataCell(InkWell(
@@ -312,7 +307,7 @@ class QuranTab extends StatelessWidget {
                       child: Center(
                         child: Text(
                           suraNames[index],
-                          style: GoogleFonts.elMessiri(fontSize: 20),
+                          style: Theme.of(context).textTheme.headlineSmall,
                         ),
                       ),
                     )),

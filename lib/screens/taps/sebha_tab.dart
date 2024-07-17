@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:islami_app/theme/app-colors.dart';
 
 class SebhaTab extends StatefulWidget {
   static const String routeName = 'sebahpage';
@@ -13,9 +13,11 @@ class _SebhaTabState extends State<SebhaTab> {
   int countter = 0;
 
   int index = 0;
-
+  Color? countcolor;
+  Color? textBodyColor;
   double angel = 0;
-
+  String? head;
+  String? body;
   List<String> azkar = [
     "سبحان الله",
     "الحمد لله",
@@ -25,6 +27,11 @@ class _SebhaTabState extends State<SebhaTab> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeMode currentThemeMode =
+        Theme.of(context).brightness == Brightness.light
+            ? ThemeMode.light
+            : ThemeMode.dark;
+    selectedImage(currentThemeMode);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -33,7 +40,7 @@ class _SebhaTabState extends State<SebhaTab> {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 50.0),
-              child: Image.asset("assets/images/head.png"),
+              child: Image.asset(head!),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 79.0),
@@ -43,7 +50,7 @@ class _SebhaTabState extends State<SebhaTab> {
                       onTap: () {
                         onTap();
                       },
-                      child: Image.asset("assets/images/body.png"))),
+                      child: Image.asset(body!))),
             )
           ],
         ),
@@ -53,11 +60,7 @@ class _SebhaTabState extends State<SebhaTab> {
         Text(
           textAlign: TextAlign.center,
           "عدد التسبيحات",
-          style: GoogleFonts.elMessiri(
-            fontSize: 25,
-            wordSpacing: 4,
-            fontWeight: FontWeight.w400,
-          ),
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
         Padding(
           padding: const EdgeInsets.only(top: 26.0),
@@ -66,16 +69,11 @@ class _SebhaTabState extends State<SebhaTab> {
               height: 81,
               width: 69,
               decoration: BoxDecoration(
-                  color: Color(0xFFB7935F),
-                  borderRadius: BorderRadius.circular(25)),
+                  color: countcolor, borderRadius: BorderRadius.circular(25)),
               child: Center(
                   child: Text(
                 "$countter",
-                style: GoogleFonts.elMessiri(
-                  fontSize: 25,
-                  wordSpacing: 4,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.labelMedium,
               )),
             ),
           ),
@@ -86,15 +84,11 @@ class _SebhaTabState extends State<SebhaTab> {
             child: Container(
               padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
-                  color: Color(0xFFB7935F),
+                  color: textBodyColor,
                   borderRadius: BorderRadius.circular(25)),
               child: Text(
                 azkar[index],
-                style: GoogleFonts.elMessiri(
-                  fontSize: 25,
-                  wordSpacing: 4,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.labelLarge,
               ),
             ),
           ),
@@ -115,5 +109,19 @@ class _SebhaTabState extends State<SebhaTab> {
     }
     angel += 360 / 4;
     setState(() {});
+  }
+
+  selectedImage(ThemeMode themeMode) {
+    if (themeMode == ThemeMode.light) {
+      head = "assets/images/head.png";
+      body = "assets/images/body.png";
+      countcolor = AppColor.PraimaryColor;
+      textBodyColor = AppColor.PraimaryColor;
+    } else {
+      body = "assets/images/body-dark.png";
+      head = "assets/images/head-darck.png";
+      countcolor = AppColor.DarchPraimaryColor;
+      textBodyColor = AppColor.YalowwColor;
+    }
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/screens/details/hadeth-details.dart';
 import 'package:islami_app/models/hadeth-model.dart';
 
@@ -29,27 +28,17 @@ class _AhadethTabState extends State<AhadethTab> {
           "assets/images/ahadeth-bg.png",
           height: 219,
         ),
-        Divider(
-          color: Color(0xffB7935F),
-          thickness: 3,
-        ),
+        Divider(),
         Text(
           "Ahadeth",
           textAlign: TextAlign.center,
-          style: GoogleFonts.elMessiri(
-            fontSize: 25,
-            wordSpacing: 4,
-            fontWeight: FontWeight.w400,
-          ),
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
-        Divider(
-          color: Color(0xffB7935F),
-          thickness: 3,
-        ),
+        Divider(),
         Expanded(
           child: ListView.separated(
             separatorBuilder: (context, index) => Divider(
-              color: Color(0xffB7935F),
+              thickness: 1,
             ),
             itemBuilder: (context, index) {
               return InkWell(
@@ -60,11 +49,7 @@ class _AhadethTabState extends State<AhadethTab> {
                 child: Text(
                   textAlign: TextAlign.center,
                   allAhadeth[index].title,
-                  style: GoogleFonts.inter(
-                    fontSize: 25,
-                    wordSpacing: 4,
-                    fontWeight: FontWeight.normal,
-                  ),
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
               );
             },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami_app/screens/details/hadeth-details.dart';
 import 'package:islami_app/screens/home-page.dart';
 import 'package:islami_app/screens/details/sura_details.dart';
+import 'package:islami_app/theme/app-theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      themeMode: ThemeMode.dark,
+      theme: AppTheming.LightTheme,
+      darkTheme: AppTheming.DarckTheme,
       debugShowCheckedModeBanner: false,
       initialRoute: HomePage.routeName,
       routes: {
