@@ -1,5 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:islami_app/bottom_sheets/language_bottomsheet.dart';
+import 'package:islami_app/bottom_sheets/theme_bottomsheet.dart';
+import 'package:islami_app/providers/my_provider.dart';
 import 'package:islami_app/theme/app-colors.dart';
+import 'package:provider/provider.dart';
 
 class SettingsTab extends StatefulWidget {
   SettingsTab({Key? key}) : super(key: key);
@@ -9,17 +14,17 @@ class SettingsTab extends StatefulWidget {
 }
 
 class _SettingsTabState extends State<SettingsTab> {
-  // bool light = false;
-
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            "Theme",
+            "theme".tr(),
             style: Theme.of(context).textTheme.headlineLarge,
           ),
           SizedBox(height: 20),
@@ -27,57 +32,11 @@ class _SettingsTabState extends State<SettingsTab> {
             onTap: () {
               showModalBottomSheet(
                 context: context,
+                isScrollControlled: true,
+                isDismissible: true,
+                backgroundColor: Colors.white,
                 builder: (context) {
-                  return Container(
-                    color: AppColor.PraimaryColor,
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Select Theme",
-                          style: Theme.of(context).textTheme.headlineLarge,
-                        ),
-                        SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Light",
-                              style: Theme.of(context).textTheme.headlineMedium,
-                            ),
-                            Switch(
-                              value: true,
-                              onChanged: (value) {
-                                setState(() {
-                                  value = !value;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Light",
-                              style: Theme.of(context).textTheme.headlineMedium,
-                            ),
-                            Switch(
-                              value: false,
-                              onChanged: (value) {
-                                setState(() {
-                                  value = !value;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  );
+                  return ThemeBottomSheet();
                 },
               );
             },
@@ -87,15 +46,20 @@ class _SettingsTabState extends State<SettingsTab> {
                 borderRadius: BorderRadius.circular(25),
                 border: Border.all(color: Color(0xffB7935F)),
               ),
-              child: Text(
-                "Light",
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
+              child: provider.appTheme != ThemeMode.dark
+                  ? Text(
+                      "light".tr(),
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    )
+                  : Text(
+                      "dark".tr(),
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
             ),
           ),
           SizedBox(height: 40),
           Text(
-            "Language",
+            "language".tr(),
             style: Theme.of(context).textTheme.headlineLarge,
           ),
           SizedBox(height: 20),
@@ -103,57 +67,11 @@ class _SettingsTabState extends State<SettingsTab> {
             onTap: () {
               showModalBottomSheet(
                 context: context,
+                isScrollControlled: true,
+                isDismissible: true,
+                backgroundColor: Colors.white,
                 builder: (context) {
-                  return Container(
-                    color: AppColor.PraimaryColor,
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Select Language",
-                          style: Theme.of(context).textTheme.headlineLarge,
-                        ),
-                        SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Arabic",
-                              style: Theme.of(context).textTheme.headlineMedium,
-                            ),
-                            Switch(
-                              value: true,
-                              onChanged: (value) {
-                                setState(() {
-                                  value = !value;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "English",
-                              style: Theme.of(context).textTheme.headlineMedium,
-                            ),
-                            Switch(
-                              value: false,
-                              onChanged: (value) {
-                                setState(() {
-                                  value = !value;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  );
+                  return LanguageBottomSheet();
                 },
               );
             },
@@ -163,10 +81,15 @@ class _SettingsTabState extends State<SettingsTab> {
                 borderRadius: BorderRadius.circular(25),
                 border: Border.all(color: AppColor.PraimaryColor),
               ),
-              child: Text(
-                "Arabic",
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
+              child: context.locale == Locale("ar")
+                  ? Text(
+                      "arabic".tr(),
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    )
+                  : Text(
+                      "english".tr(),
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
             ),
           ),
         ],

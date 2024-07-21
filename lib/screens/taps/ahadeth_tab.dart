@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/screens/details/hadeth-details.dart';
@@ -30,7 +31,7 @@ class _AhadethTabState extends State<AhadethTab> {
         ),
         Divider(),
         Text(
-          "Ahadeth",
+          "ahadeth".tr(),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headlineLarge,
         ),

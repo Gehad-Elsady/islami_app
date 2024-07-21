@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class RadioTab extends StatelessWidget {
@@ -20,7 +21,7 @@ class RadioTab extends StatelessWidget {
         ),
         Text(
           textAlign: TextAlign.center,
-          "إذاعة القرآن الكريم",
+          "quran-radio".tr(),
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         SizedBox(

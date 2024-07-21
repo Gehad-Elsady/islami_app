@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/screens/details/sura_details.dart';
 import 'package:islami_app/models/sura_model.dart';
@@ -253,7 +254,7 @@ class QuranTab extends StatelessWidget {
         ),
         Divider(),
         Text(
-          "Sura Names",
+          "sura_names".tr(),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
@@ -271,16 +272,22 @@ class QuranTab extends StatelessWidget {
                 DataColumn(
                   label: Center(
                     child: Text(
-                      'عدد الآيات',
-                      style: Theme.of(context).textTheme.headlineSmall,
+                      "number-of-verses".tr(),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineSmall
+                          ?.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
                 DataColumn(
                   label: Center(
                     child: Text(
-                      'اسم السورة',
-                      style: Theme.of(context).textTheme.headlineSmall,
+                      "sura_namest".tr(),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineSmall
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
