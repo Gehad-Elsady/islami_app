@@ -1,0 +1,27 @@
+{
+    "islami": "Islami",
+    "sura_names": "Sura Names",
+    "ahadeth": "Ahadeth",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "language": "language",
+    "english": "English",
+    "arabic": "Arabic",
+    "moshaf-navigation":"Moshaf",
+    "sebha-navigation":"Sebha",
+    "radio-navigation":"Radio",
+    "ahadeth-navigation":"Ahadeth",
+    "settings-navigation":"Settings",
+    "select_theme":"Select Theme",
+    "select_language":"Select Language",
+    "azkar-f":"Glory be to God",
+    "azkar-ff":"Praise be to God",
+    "azkar-fff":"There is no god but God",
+    "azkar-ffff":"God is Great",
+    "number-of-tasbihs":"Number of tasbihs",
+    "quran-radio":"Holy Quran Radio",
+    "sura_namest": "Sura Names",
+    "number-of-verses":"Number of verses"
+
+  }

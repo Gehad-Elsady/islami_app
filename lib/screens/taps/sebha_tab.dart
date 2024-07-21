@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:islami_app/providers/my_provider.dart';
+import 'package:islami_app/theme/app-colors.dart';
+import 'package:provider/provider.dart';
 
 class SebhaTab extends StatefulWidget {
   static const String routeName = 'sebahpage';
@@ -11,20 +14,19 @@ class SebhaTab extends StatefulWidget {
 
 class _SebhaTabState extends State<SebhaTab> {
   int countter = 0;
-
   int index = 0;
-
   double angel = 0;
-
   List<String> azkar = [
-    "سبحان الله",
-    "الحمد لله",
-    "لا إله إلا الله",
-    "الله أكبر"
+    "azkar-f".tr(),
+    "azkar-ff".tr(),
+    "azkar-fff".tr(),
+    "azkar-ffff".tr(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -33,7 +35,9 @@ class _SebhaTabState extends State<SebhaTab> {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 50.0),
-              child: Image.asset("assets/images/head.png"),
+              child: Image.asset(provider.appTheme == ThemeMode.dark
+                  ? "assets/images/head-darck.png"
+                  : "assets/images/head.png"),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 79.0),
@@ -43,7 +47,9 @@ class _SebhaTabState extends State<SebhaTab> {
                       onTap: () {
                         onTap();
                       },
-                      child: Image.asset("assets/images/body.png"))),
+                      child: Image.asset(provider.appTheme == ThemeMode.dark
+                          ? "assets/images/body-dark.png"
+                          : "assets/images/body.png"))),
             )
           ],
         ),
@@ -52,12 +58,8 @@ class _SebhaTabState extends State<SebhaTab> {
         ),
         Text(
           textAlign: TextAlign.center,
-          "عدد التسبيحات",
-          style: GoogleFonts.elMessiri(
-            fontSize: 25,
-            wordSpacing: 4,
-            fontWeight: FontWeight.w400,
-          ),
+          "number-of-tasbihs".tr(),
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
         Padding(
           padding: const EdgeInsets.only(top: 26.0),
@@ -66,16 +68,14 @@ class _SebhaTabState extends State<SebhaTab> {
               height: 81,
               width: 69,
               decoration: BoxDecoration(
-                  color: Color(0xFFB7935F),
+                  color: provider.appTheme == ThemeMode.dark
+                      ? AppColor.DarchPraimaryColor
+                      : AppColor.PraimaryColor,
                   borderRadius: BorderRadius.circular(25)),
               child: Center(
                   child: Text(
                 "$countter",
-                style: GoogleFonts.elMessiri(
-                  fontSize: 25,
-                  wordSpacing: 4,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.labelMedium,
               )),
             ),
           ),
@@ -86,15 +86,13 @@ class _SebhaTabState extends State<SebhaTab> {
             child: Container(
               padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
-                  color: Color(0xFFB7935F),
+                  color: provider.appTheme == ThemeMode.dark
+                      ? AppColor.YalowwColor
+                      : AppColor.PraimaryColor,
                   borderRadius: BorderRadius.circular(25)),
               child: Text(
                 azkar[index],
-                style: GoogleFonts.elMessiri(
-                  fontSize: 25,
-                  wordSpacing: 4,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.labelLarge,
               ),
             ),
           ),

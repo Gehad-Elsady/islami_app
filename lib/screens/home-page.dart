@@ -1,10 +1,14 @@
+// ignore_for_file: unrelated_type_equality_checks
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:islami_app/providers/my_provider.dart';
 import 'package:islami_app/screens/taps/ahadeth_tab.dart';
 import 'package:islami_app/screens/taps/quran_tab.dart';
 import 'package:islami_app/screens/taps/radio_tab.dart';
 import 'package:islami_app/screens/taps/sebha_tab.dart';
 import 'package:islami_app/screens/taps/settings_tab.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = 'homepage';
@@ -16,74 +20,72 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
     return Stack(
       children: [
         Image.asset(
-          "assets/images/bg3.png",
+          provider.appTheme == ThemeMode.light
+              ? "assets/images/bg3.png"
+              : "assets/images/bg-dark.png",
+          fit: BoxFit.cover,
         ),
         Scaffold(
-          backgroundColor: Colors.transparent,
           appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            centerTitle: true,
             title: Text(
-              "Islami",
-              style: GoogleFonts.elMessiri(
-                  fontSize: 30, fontWeight: FontWeight.bold),
+              'islami'.tr(),
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(
-              currentIndex: selectedIndex,
-              onTap: (index) {
+            currentIndex: selectedIndex,
+            onTap: (index) {
+              setState(() {
                 selectedIndex = index;
-                setState(() {});
-              },
-              showUnselectedLabels: false,
-              showSelectedLabels: true,
-              type: BottomNavigationBarType.fixed,
-              backgroundColor: Color(0xffB7935F),
-              selectedItemColor: Colors.black,
-              unselectedItemColor: Colors.white,
-              items: [
-                BottomNavigationBarItem(
-                    backgroundColor: Color(0xffB7935F),
-                    icon: ImageIcon(
-                      AssetImage("assets/images/quran.png"),
-                      size: 30,
-                    ),
-                    label: "Moshaf"),
-                BottomNavigationBarItem(
-                    backgroundColor: Color(0xffB7935F),
-                    icon: ImageIcon(
-                      AssetImage("assets/images/sebha.png"),
-                      size: 30,
-                    ),
-                    label: "Sebha"),
-                BottomNavigationBarItem(
-                    backgroundColor: Color(0xffB7935F),
-                    icon: ImageIcon(
-                      AssetImage("assets/images/radio.png"),
-                      size: 30,
-                    ),
-                    label: "Radio"),
-                BottomNavigationBarItem(
-                    backgroundColor: Color(0xffB7935F),
-                    icon: ImageIcon(
-                      AssetImage("assets/images/ahadeth.png"),
-                      size: 30,
-                    ),
-                    label: "Ahadeth"),
-                BottomNavigationBarItem(
-                    backgroundColor: Color(0xffB7935F),
-                    icon: Icon(
-                      Icons.settings,
-                      size: 30,
-                    ),
-                    label: "Settings"),
-              ]),
+              });
+            },
+            items: [
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage("assets/images/quran.png"),
+                  size: 30,
+                ),
+                label: 'moshaf-navigation'.tr(),
+              ),
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage("assets/images/sebha.png"),
+                  size: 30,
+                ),
+                label: "sebha-navigation".tr(),
+              ),
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage("assets/images/radio.png"),
+                  size: 30,
+                ),
+                label: "radio-navigation".tr(),
+              ),
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage("assets/images/ahadeth.png"),
+                  size: 30,
+                ),
+                label: "ahadeth-navigation".tr(),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.settings,
+                  size: 30,
+                ),
+                label: "settings-navigation".tr(),
+              ),
+            ],
+          ),
           body: tabs[selectedIndex],
+          backgroundColor:
+              Colors.transparent, // Make scaffold background transparent
         ),
       ],
     );

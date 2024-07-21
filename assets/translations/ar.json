@@ -1,0 +1,31 @@
+{
+    "islami": "إسلامي",
+    "sura_names": "اسم السوره",
+    "ahadeth": "الاحاديث",
+    "theme": "المظهر",
+    "dark": "ليلي",
+    "light": "نهاري",
+    "language": "اللغه",
+    "english": "انجليزي",
+    "arabic": "عربي",
+    "moshaf-navigation":"مصحف",
+    "sebha-navigation":"سبحة",
+    "radio-navigation":"راديو",
+    "ahadeth-navigation":"أحاديث",
+    "settings-navigation":"إعدادات",
+    "select_theme":"اختر نمطا",
+    "select_language":"اختار اللغة",
+    "azkar-f": "سبحان الله",
+    "azkar-ff":  "الحمد لله",
+    "azkar-fff": "لا إله إلا الله",
+    "azkar-ffff": "الله أكبر",
+    "number-of-tasbihs":"عدد التسبيحات",
+    "quran-radio":"إذاعة القرآن الكريم",
+    "sura_namest": "اسم السوره",
+    "number-of-verses":"عدد الآيات"
+
+
+
+
+
+  }

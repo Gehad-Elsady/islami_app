@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class RadioTab extends StatelessWidget {
   const RadioTab({super.key});
@@ -21,12 +21,8 @@ class RadioTab extends StatelessWidget {
         ),
         Text(
           textAlign: TextAlign.center,
-          "إذاعة القرآن الكريم",
-          style: GoogleFonts.elMessiri(
-            fontSize: 25,
-            wordSpacing: 4,
-            fontWeight: FontWeight.w400,
-          ),
+          "quran-radio".tr(),
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
         SizedBox(
           height: 57,
@@ -38,7 +34,6 @@ class RadioTab extends StatelessWidget {
                 onPressed: () {},
                 icon: ImageIcon(
                   AssetImage("assets/images/Iconback.png"),
-                  color: Color(0xffB7935F),
                 )),
             SizedBox(
               width: 40,
@@ -48,7 +43,6 @@ class RadioTab extends StatelessWidget {
                 icon: Icon(
                   size: 70,
                   Icons.play_arrow,
-                  color: Color(0xffB7935F),
                 )),
             SizedBox(
               width: 40,
@@ -57,7 +51,6 @@ class RadioTab extends StatelessWidget {
                 onPressed: () {},
                 icon: ImageIcon(
                   AssetImage("assets/images/Iconnext.png"),
-                  color: Color(0xffB7935F),
                 ))
           ],
         )
