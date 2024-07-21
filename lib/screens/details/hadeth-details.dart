@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/models/hadeth-model.dart';
+import 'package:islami_app/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class HadethDetailsScreen extends StatefulWidget {
   static const String routeName = "HadethDetails";
@@ -13,16 +15,15 @@ class HadethDetailsScreen extends StatefulWidget {
 class _SuraDetailsScreenState extends State<HadethDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    ThemeMode currentThemeMode =
-        Theme.of(context).brightness == Brightness.light
-            ? ThemeMode.light
-            : ThemeMode.dark;
-    String img = selectedImage(currentThemeMode);
+    var provider = Provider.of<MyProvider>(context);
     var model = ModalRoute.of(context)?.settings.arguments as HadethModel;
     return Container(
       decoration: BoxDecoration(
-          image:
-              DecorationImage(image: AssetImage(img), fit: BoxFit.fitHeight)),
+          image: DecorationImage(
+              image: AssetImage(provider.appTheme == ThemeMode.dark
+                  ? "assets/images/bg-dark.png"
+                  : "assets/images/bg3.png"),
+              fit: BoxFit.fitHeight)),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -44,13 +45,5 @@ class _SuraDetailsScreenState extends State<HadethDetailsScreen> {
         ),
       ),
     );
-  }
-
-  String selectedImage(ThemeMode themeMode) {
-    if (themeMode == ThemeMode.light) {
-      return "assets/images/bg3.png";
-    } else {
-      return "assets/images/bg-dark.png";
-    }
   }
 }
