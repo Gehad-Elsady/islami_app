@@ -1,60 +1,66 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:islami_app/bloc/cubit.dart';
+import 'package:islami_app/bloc/states.dart';
+import 'package:islami_app/models/RadioModel.dart';
+import 'package:islami_app/screens/widget/radio-item.dart';
 
 class RadioTab extends StatelessWidget {
   const RadioTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 100.0),
-          child: Image.asset(
-            "assets/images/radio-bg.png",
-            height: 222,
-          ),
-        ),
-        SizedBox(
-          height: 57,
-        ),
-        Text(
-          textAlign: TextAlign.center,
-          "quran-radio".tr(),
-          style: Theme.of(context).textTheme.headlineLarge,
-        ),
-        SizedBox(
-          height: 57,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-                onPressed: () {},
-                icon: ImageIcon(
-                  AssetImage("assets/images/Iconback.png"),
-                )),
-            SizedBox(
-              width: 40,
-            ),
-            IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  size: 70,
-                  Icons.play_arrow,
-                )),
-            SizedBox(
-              width: 40,
-            ),
-            IconButton(
-                onPressed: () {},
-                icon: ImageIcon(
-                  AssetImage("assets/images/Iconnext.png"),
-                ))
-          ],
-        )
-      ],
+    return BlocProvider(
+      create: (context) => RadioCubit()..fetchRadioData(),
+      child: BlocConsumer<RadioCubit, RadioStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          var cubit = RadioCubit.get(context);
+
+          if (state is RadioGetSourcesLoadingState) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is RadioGetSourcesSuccessState) {
+            List<Radios> radios = cubit.radioModel?.radios ?? [];
+
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 100.0),
+                  child: Image.asset(
+                    "assets/images/radio-bg.png",
+                    height: 222,
+                  ),
+                ),
+                const SizedBox(
+                  height: 57,
+                ),
+                if (radios.isNotEmpty)
+                  Expanded(
+                    child: ListView.builder(
+                      physics: const PageScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: RadioItem(
+                            player: cubit.player,
+                            radio: radios[index],
+                          ),
+                        );
+                      },
+                      itemCount: radios.length,
+                    ),
+                  )
+                else
+                  const Center(child: Text("No radio channels available")),
+              ],
+            );
+          } else {
+            return const Center(child: Text("Failed to load radio data"));
+          }
+        },
+      ),
     );
   }
 }
