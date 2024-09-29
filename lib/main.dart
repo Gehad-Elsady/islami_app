@@ -1,5 +1,7 @@
+import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:islami_app/bloc/observer.dart';
 import 'package:islami_app/providers/my_provider.dart';
 import 'package:islami_app/screens/details/hadeth-details.dart';
 import 'package:islami_app/screens/home-page.dart';
@@ -8,6 +10,8 @@ import 'package:islami_app/theme/app-theme.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
+  Bloc.observer = MyBlocObserver();
+
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp(
